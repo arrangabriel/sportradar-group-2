@@ -52,7 +52,7 @@ function IconsLayer(props) {
 }
 
 function getIcon(sportName) {
-	return iconMap[sportName] || iconMap[generic];
+	return iconMap[sportName] || iconMap["generic"];
 }
 
 const iconMap = {
@@ -64,7 +64,10 @@ const iconMap = {
 	"badminton": "https://cdn-icons-png.flaticon.com/512/3445/3445542.png",
 	"table tennis": "https://cdn-icons-png.flaticon.com/512/8704/8704018.png",
 	"baseball": "https://cdn-icons-png.flaticon.com/512/3210/3210549.png",
-	"generic": "https://cdn-icons-png.flaticon.com/512/4163/4163679.png",
+	"handball": "https://cdn-icons-png.flaticon.com/512/4893/4893959.png",
+	"ice hockey": "https://cdn-icons-png.flaticon.com/512/3062/3062042.png",
+	"volleyball": "https://cdn-icons-png.flaticon.com/512/184/184940.png",
+	"generic": "https://cdn-icons-png.flaticon.com/512/857/857492.png",
 };
 
 export default IconsLayer;
