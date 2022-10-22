@@ -1,10 +1,11 @@
 import React, { useCallback, useRef, useState, useEffect } from "react";
 
 import DeckGL from "@deck.gl/react";
-import { LineLayer } from "@deck.gl/layers";
 import { Map as MapboxMap } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { getEventsSync } from '../backend/backend.js'
+// import iconLayer from "./IconLayer";
+import CreateLayers from "./Layers";
 
 // Set your mapbox access token here
 const MAPBOX_ACCESS_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
@@ -21,7 +22,6 @@ const INITIAL_VIEW_STATE = {
 export default function Map(props) {
 	const { data } = props;
 
-	const layers = [];
 	const [events, setEvents] = useState([]);
 
 	useEffect(() => {
@@ -41,6 +41,8 @@ export default function Map(props) {
 		// Do stuff with event list
 		console.log("Events from map", events)
 	}, [events])
+
+	const layers = CreateLayers({ data });
 
 	return (
 		<DeckGL
