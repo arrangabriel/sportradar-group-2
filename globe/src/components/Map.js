@@ -26,7 +26,7 @@ export default function Map(props) {
 	return (
 		<DeckGL
 			initialViewState={INITIAL_VIEW_STATE}
-			controller={true}
+			controller={false}
 			layers={layers}
 		>
 			<MapboxMap
