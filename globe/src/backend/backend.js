@@ -1,6 +1,4 @@
-getEventsSync((e) => { console.log(e) })
-
-function getEventsSync(callback) {
+export function getEventsSync(callback) {
     getEventsAsync().then((result) => callback(result));
 }
 
@@ -13,15 +11,8 @@ async function getEventsAsync() {
     for (matchEvent of data.doc[0].data) {
         eventType = getEventType(matchEvent.name)
         if (results[matchEvent.matchid] == undefined) {
-            let location = await getMatchLocation(matchEvent.matchid).split(",");
-            location.name = location.location;
-            if (location.coordinates == null) {
-            } else {
-                let coords = location.coordinates.split(",");
-                coords.reverse();
-                location.coordinates = coords;
-            }
-
+            let location = await getMatchLocation(matchEvent.matchid).split();
+            location.reverse();
             results[matchEvent.matchid] = {
                 "sport": getSportTypes(matchEvent._sid),
                 "events": [
