@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.sportradar.sdk</groupId>
     <artifactId>sdk-parent</artifactId>
     <version>2.0.0</version>
+    <parent>
+        <groupId>com.boys</groupId>
+        <artifactId>globe</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
     <modules>
         <module>sdk</module>
     </modules>
@@ -14,9 +20,9 @@
     <name>Livedata SDK</name>
     <inceptionYear>2013</inceptionYear>
 
-<!--    <scm>-->
-<!--        <connection>scm:git:git@git.sportradar.ag:bookmakersdk/java.git</connection>-->
-<!--    </scm>-->
+    <!--    <scm>-->
+    <!--        <connection>scm:git:git@git.sportradar.ag:bookmakersdk/java.git</connection>-->
+    <!--    </scm>-->
     <developers>
         <developer>
             <id>sdk</id>
@@ -70,7 +76,7 @@
         <maven-dependency-plugin.version>3.3.0</maven-dependency-plugin.version>
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
         <maven-javadoc-plugin.version>3.4.1</maven-javadoc-plugin.version>
-<!--        <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>-->
+        <!--        <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>-->
         <maven-shade-plugin.version>3.4.0</maven-shade-plugin.version>
         <maven-resources-plugin.version>3.3.0</maven-resources-plugin.version>
         <jaxb2-maven-plugin.version>3.1.0</jaxb2-maven-plugin.version>
@@ -152,49 +158,49 @@
                         sdk/src/main/java/com/sportradar/sdk/common/classes;
                         sdk/src/main/java/com/sportradar/sdk/common/exceptions;
                     </sourcepath>
-<!--                    <excludePackageNames>-->
-<!--                        *com.sportradar.sdk.common.classes*-->
-<!--                        *com.sportradar.sdk.common.interfaces*-->
-<!--                        *com.sportradar.sdk.common.settings*-->
-<!--                        *EntityMapper*-->
-<!--                        *Factory*-->
-<!--                        *HttpMethod*-->
-<!--                        *InvalidEntityException*-->
-<!--                        *Jaxb*-->
-<!--                        *LiveFeedProtocolManager*-->
-<!--                        *LiveFeedTestManagerBase*-->
-<!--                        *LiveScoutTestManagerImpl*-->
-<!--                        *LiveScoutTestManagerImpl*-->
-<!--                        *MessagePipeline*-->
-<!--                        *MessageProcessor*-->
-<!--                        *ProtocolManager*-->
-<!--                        *ProtocolManagerListener*-->
-<!--                        *SdkLogAppenderType*-->
-<!--                        *UnknownEnumException*-->
-<!--                    </excludePackageNames>-->
+                    <!--                    <excludePackageNames>-->
+                    <!--                        *com.sportradar.sdk.common.classes*-->
+                    <!--                        *com.sportradar.sdk.common.interfaces*-->
+                    <!--                        *com.sportradar.sdk.common.settings*-->
+                    <!--                        *EntityMapper*-->
+                    <!--                        *Factory*-->
+                    <!--                        *HttpMethod*-->
+                    <!--                        *InvalidEntityException*-->
+                    <!--                        *Jaxb*-->
+                    <!--                        *LiveFeedProtocolManager*-->
+                    <!--                        *LiveFeedTestManagerBase*-->
+                    <!--                        *LiveScoutTestManagerImpl*-->
+                    <!--                        *LiveScoutTestManagerImpl*-->
+                    <!--                        *MessagePipeline*-->
+                    <!--                        *MessageProcessor*-->
+                    <!--                        *ProtocolManager*-->
+                    <!--                        *ProtocolManagerListener*-->
+                    <!--                        *SdkLogAppenderType*-->
+                    <!--                        *UnknownEnumException*-->
+                    <!--                    </excludePackageNames>-->
                 </configuration>
             </plugin>
         </plugins>
 
         <pluginManagement>
             <plugins>
-<!--                <plugin>-->
-<!--                    <groupId>org.apache.maven.plugins</groupId>-->
-<!--                    <artifactId>maven-jar-plugin</artifactId>-->
-<!--                    <version>${maven-jar-plugin.version}</version>-->
-<!--                    <configuration>-->
-<!--                        <excludes>-->
-<!--                            <exclude>*.properties</exclude>-->
-<!--                        </excludes>-->
+                <!--                <plugin>-->
+                <!--                    <groupId>org.apache.maven.plugins</groupId>-->
+                <!--                    <artifactId>maven-jar-plugin</artifactId>-->
+                <!--                    <version>${maven-jar-plugin.version}</version>-->
+                <!--                    <configuration>-->
+                <!--                        <excludes>-->
+                <!--                            <exclude>*.properties</exclude>-->
+                <!--                        </excludes>-->
 
-<!--                        <archive>-->
-<!--                            <index>true</index>-->
-<!--                            <manifest>-->
-<!--                                <addClasspath>false</addClasspath>-->
-<!--                            </manifest>-->
-<!--                        </archive>-->
-<!--                    </configuration>-->
-<!--                </plugin>-->
+                <!--                        <archive>-->
+                <!--                            <index>true</index>-->
+                <!--                            <manifest>-->
+                <!--                                <addClasspath>false</addClasspath>-->
+                <!--                            </manifest>-->
+                <!--                        </archive>-->
+                <!--                    </configuration>-->
+                <!--                </plugin>-->
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -202,8 +208,8 @@
                     <version>${maven-shade-plugin.version}</version>
                     <configuration>
                         <transformers>
-                            <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer"/>
-                            <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheNoticeResourceTransformer"/>
+                            <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer" />
+                            <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheNoticeResourceTransformer" />
                             <transformer implementation="org.apache.maven.plugins.shade.resource.DontIncludeResourceTransformer">
                                 <resources>
                                     <resource>META-INF/MANIFEST.MF</resource>
@@ -212,24 +218,24 @@
                             </transformer>
                         </transformers>
                     </configuration>
-<!--                    <executions>-->
-<!--                        <execution>-->
-<!--                            <phase>package</phase>-->
-<!--                            <goals>-->
-<!--                                <goal>shade</goal>-->
-<!--                            </goals>-->
-<!--                            <configuration>-->
-<!--                                <filters>-->
-<!--                                    <filter>-->
-<!--                                        <artifact>*:*</artifact>-->
-<!--                                        <excludes>-->
-<!--                                            <exclude>*.properties</exclude>-->
-<!--                                        </excludes>-->
-<!--                                    </filter>-->
-<!--                                </filters>-->
-<!--                            </configuration>-->
-<!--                        </execution>-->
-<!--                    </executions>-->
+                    <!--                    <executions>-->
+                    <!--                        <execution>-->
+                    <!--                            <phase>package</phase>-->
+                    <!--                            <goals>-->
+                    <!--                                <goal>shade</goal>-->
+                    <!--                            </goals>-->
+                    <!--                            <configuration>-->
+                    <!--                                <filters>-->
+                    <!--                                    <filter>-->
+                    <!--                                        <artifact>*:*</artifact>-->
+                    <!--                                        <excludes>-->
+                    <!--                                            <exclude>*.properties</exclude>-->
+                    <!--                                        </excludes>-->
+                    <!--                                    </filter>-->
+                    <!--                                </filters>-->
+                    <!--                            </configuration>-->
+                    <!--                        </execution>-->
+                    <!--                    </executions>-->
                 </plugin>
             </plugins>
         </pluginManagement>

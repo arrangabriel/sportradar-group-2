@@ -1,13 +1,15 @@
-package com.globeboys.GlobeBackend;
+package com.boys.Globe;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GlobeBackendApplication {
+public class GlobeApplication {
 
+	public GlobeApplication(){
+	}
 	public static void main(String[] args) {
-		SpringApplication.run(GlobeBackendApplication.class, args);
+		SpringApplication.run(GlobeApplication.class, args);
 	}
 
 }

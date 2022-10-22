@@ -1,5 +1,16 @@
 # Getting Started with Create React App
 
+  "dependencies": {
+    "@deck.gl/core": "8.4.10",
+    "@deck.gl/layers": "8.4.10",
+    "@deck.gl/mapbox": "8.4.10",
+    "@deck.gl/react": "8.4.10",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.2",
+    "react-map-gl": "6.1.10",
+    "react-scripts": "4.0.3"
+  },
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
