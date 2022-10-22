@@ -21,7 +21,7 @@ function IconsLayer(props) {
 		// getAngle: 0,
 		getColor: (d) => [Math.sqrt(d.exits), 140, 0],
 		getIcon: (d) => ({
-			url: getIcon(d.sport),
+			url: createPin(),
 			width: 128,
 			height: 128,
 			anchorY: 128,
@@ -70,3 +70,20 @@ const iconMap = {
 };
 
 export default IconsLayer;
+
+function createPin() {
+
+	let canvas = document.createElement("canvas");
+	let context = canvas.getContext("2d");
+
+	const baseImage = new Image(128, 128);
+	baseImage.src = "https://cdn-icons-png.flaticon.com/512/447/447031.png";
+	baseImage.onload = function () {
+		context.fill()
+		context.drawImage(baseImage, 0, 0);
+	}
+
+	console.log(canvas.toDataURL())
+
+	return canvas.toDataURL();
+}
