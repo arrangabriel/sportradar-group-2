@@ -39,11 +39,8 @@
   to {
     transform: rotate(360deg);
   }
-<<<<<<< HEAD
 }
 
 .mapboxgl-ctrl-logo {
   display: none !important;
-=======
->>>>>>> 685a2cc934554482243745353f3beb30385fc2c2
 }

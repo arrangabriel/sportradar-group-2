@@ -3,15 +3,11 @@ import React, { useCallback, useRef, useState, useEffect } from "react";
 import DeckGL from "@deck.gl/react";
 import { Map as MapboxMap } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { getEventsSync } from '../backend/backend.js'
+import { getEventsSync } from "../backend/backend.js";
 // import iconLayer from "./IconLayer";
 import CreateLayers from "./Layers";
 
-<<<<<<< HEAD
 import "../App.css";
-=======
-
->>>>>>> 685a2cc934554482243745353f3beb30385fc2c2
 
 // Set your mapbox access token here
 const MAPBOX_ACCESS_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
@@ -32,15 +28,15 @@ export default function Map(props) {
 
 	useEffect(() => {
 		getEventsSync((result) => {
-			setEvents(result)
-		})
+			setEvents(result);
+		});
 		// Fetching of events
 		const interval = setInterval(() => {
-			console.log('This will be called every 30 seconds');
+			console.log("This will be called every 30 seconds");
 			// Fetch list
 			getEventsSync((result) => {
-				setEvents(result)
-			})
+				setEvents(result);
+			});
 		}, 30 * 1000);
 
 		return () => clearInterval(interval);
@@ -48,8 +44,8 @@ export default function Map(props) {
 
 	useEffect(() => {
 		// Do stuff with event list
-		console.log("Events from map", events)
-	}, [events])
+		console.log("Events from map", events);
+	}, [events]);
 
 	const layers = CreateLayers({ data });
 
