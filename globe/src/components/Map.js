@@ -1,9 +1,10 @@
 import React, { useCallback, useRef, useState } from "react";
 
 import DeckGL from "@deck.gl/react";
-import { LineLayer } from "@deck.gl/layers";
 import { Map as MapboxMap } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+// import iconLayer from "./IconLayer";
+import CreateLayers from "./Layers";
 
 // Set your mapbox access token here
 const MAPBOX_ACCESS_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
@@ -20,12 +21,12 @@ const INITIAL_VIEW_STATE = {
 export default function Map(props) {
 	const { data } = props;
 
-	const layers = [];
+	const layers = CreateLayers({ data });
 
 	return (
 		<DeckGL
 			initialViewState={INITIAL_VIEW_STATE}
-			controller={false}
+			controller={true}
 			layers={layers}
 		>
 			<MapboxMap
