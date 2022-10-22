@@ -22,7 +22,7 @@ function IconsLayer(props) {
 		// getAngle: 0,
 		getColor: (d) => [Math.sqrt(d.exits), 140, 0],
 		getIcon: (d) => ({
-			url: "https://cdn-icons-png.flaticon.com/512/5481/5481749.png",
+			url: getIcon(d.sport),
 			width: 128,
 			height: 128,
 			anchorY: 128,
@@ -50,5 +50,21 @@ function IconsLayer(props) {
 		// wrapLongitude: false,
 	});
 }
+
+function getIcon(sportName) {
+	return iconMap[sportName] || iconMap[generic];
+}
+
+const iconMap = {
+	"football": "https://cdn-icons-png.flaticon.com/512/2813/2813798.png",
+	"basketball": "https://cdn-icons-png.flaticon.com/512/889/889289.png",
+	"soccer": "https://cdn-icons-png.flaticon.com/512/1165/1165156.png",
+	"cricket": "https://cdn-icons-png.flaticon.com/512/1454/1454533.png",
+	"tennis": "https://cdn-icons-png.flaticon.com/512/4074/4074317.png",
+	"badminton": "https://cdn-icons-png.flaticon.com/512/3445/3445542.png",
+	"table tennis": "https://cdn-icons-png.flaticon.com/512/8704/8704018.png",
+	"baseball": "https://cdn-icons-png.flaticon.com/512/3210/3210549.png",
+	"generic": "https://cdn-icons-png.flaticon.com/512/4163/4163679.png",
+};
 
 export default IconsLayer;
