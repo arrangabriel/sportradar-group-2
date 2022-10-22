@@ -32,7 +32,7 @@ export default function Map(props) {
 			getEventsSync((result) => {
 				setEvents(result)
 			})
-		}, 10 * 1000);
+		}, 30 * 1000);
 
 		return () => clearInterval(interval);
 	}, []);
