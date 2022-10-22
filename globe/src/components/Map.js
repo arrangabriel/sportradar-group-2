@@ -23,27 +23,38 @@ const INITIAL_VIEW_STATE = {
 
 export default function Map() {
 	const [layers, setLayers] = useState(CreateLayers({}));
-	const [data, setData] = useState([])
+	const [data, setData] = useState([]);
+	const [counter, setCounter] = useState(0);
 
 	useEffect(() => {
 		// First call
 		getEventsSync((result) => {
-			setLayers(CreateLayers(result));
+			setData(result)
 		});
 		// Fetching of events
 		const interval = setInterval(() => {
 			getEventsSync((result) => {
-				setLayers(CreateLayers(result));
+				setCounter(0)
+				setData(result)
 			});
 		}, 30 * 1000);
 
 		return () => clearInterval(interval);
 	}, []);
 
-	useEffect(() => {
-		console.log(layers)
+	// useEffect(() => {
+	// 	console.log(layers[0])
+	// }, [layers]);
 
-	}, [layers]);
+	useEffect(() => {
+		if (counter < data.length) {
+			new Promise(r => setTimeout(r, (30 * 1000) / data.length)).then(() => {
+				setCounter(counter + 1)
+				setLayers(CreateLayers(data.slice(0, counter)))
+			}
+			)
+		}
+	}, [data, layers])
 
 
 	return (

@@ -9,7 +9,7 @@ import { IconLayer } from "@deck.gl/layers";
 function IconsLayer(props) {
 
 	return new IconLayer({
-		id: "IconLayer",
+		id: props.id,
 		data: props,
 
 		/* props from IconLayer class */
