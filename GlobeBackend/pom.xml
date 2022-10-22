@@ -20,7 +20,7 @@
 
 	<modules>
 		<module>backend</module>
-		<module>sdk2</module>
+		<module>sdk</module>
 	</modules>
 
 </project>
