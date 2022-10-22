@@ -14,7 +14,14 @@ async function getEventsAsync() {
         eventType = getEventType(matchEvent.name)
         if (results[matchEvent.matchid] == undefined) {
             let location = await getMatchLocation(matchEvent.matchid).split(",");
-            location.reverse();
+            location.name = location.location;
+            if (location.coordinates == null) {
+            } else {
+                let coords = location.coordinates.split(",");
+                coords.reverse();
+                location.coordinates = coords;
+            }
+
             results[matchEvent.matchid] = {
                 "sport": getSportTypes(matchEvent._sid),
                 "events": [
@@ -31,7 +38,7 @@ async function getEventsAsync() {
 
     for (key of Object.keys(results)) {
         let match = results[key]
-        if (!(match.location.coordinates == null && match.location.location == null)) {
+        if (!(match.location.coordinates == null && match.location.name == null)) {
             results_filtered[key] = match
         }
     }
