@@ -17,13 +17,10 @@ const INITIAL_VIEW_STATE = {
 	bearing: 0,
 };
 
-// pk.eyJ1IjoiZWxpYXNibyIsImEiOiJjbDlqcjl2cGEwOHNpM25wbGpuOWt4M2J5In0.QTfDDzyvlaU5MBgkx3KqBA
-// export REACT_APP_MAPBOX_TOKEN={pk.eyJ1IjoiZWxpYXNibyIsImEiOiJjbDlqcjl2cGEwOHNpM25wbGpuOWt4M2J5In0.QTfDDzyvlaU5MBgkx3KqBA} && npm start
-
 export default function Map(props) {
 	const { data } = props;
 
-	const layers = [new LineLayer({ id: "line-layer", data })];
+	const layers = [];
 
 	return (
 		<DeckGL
