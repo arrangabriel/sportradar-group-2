@@ -6,6 +6,8 @@ import "mapbox-gl/dist/mapbox-gl.css";
 // import iconLayer from "./IconLayer";
 import CreateLayers from "./Layers";
 
+import "../App.css";
+
 // Set your mapbox access token here
 const MAPBOX_ACCESS_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
@@ -32,6 +34,7 @@ export default function Map(props) {
 			<MapboxMap
 				mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
 				mapStyle="mapbox://styles/eliasbo/cl9iuvkog00io14pa0zz74brt"
+				attributionControl={false}
 			/>
 		</DeckGL>
 	);
