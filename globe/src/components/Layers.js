@@ -18,17 +18,7 @@ import IconsLayer from "./IconLayer";
  */
 
 export default function CreateLayers(props) {
-	const { data } = props;
-
-	const Icons = IconsLayer({
-		// data: { sport: string, coordinates: float[], events: string[] }[]
-		data: data
-			.filter((d) => d.location.coordinates !== null)
-			.map((d) => ({
-				...d,
-				coordinates: d.location.coordinates,
-			})),
-	});
+	const Icons = IconsLayer(props);
 
 	return [Icons];
 }

@@ -2,89 +2,74 @@
 import React from "react";
 import Map from "./components/Map";
 
+export default function App() {
+	return (
+		<div className="App">
+			<Map />
+		</div>
+	);
+}
+
 // Data to be used by the LineLayer
 const data = [
 	{
 		sport: "handball",
 		events: ["time", "generic"],
-		location: { coordinates: [23.8445691, 38.037762], name: "Vrilissia" },
+		location: [23.8445691, 38.037762],
 	},
 	{
 		sport: "ice hockey",
 		events: ["time"],
-		location: { coordinates: [34.243169, 62.20632], name: "Kondopoga" },
+		location: [34.243169, 62.20632],
 	},
 	{
 		sport: "basketball",
 		events: ["goal", "goal"],
-		location: { coordinates: [22.959263, 40.650845], name: "Thessaloniki" },
+		location: [22.959263, 40.650845],
 	},
 	{
 		sport: "volleyball",
 		events: ["in-play"],
-		location: { coordinates: [32.820102, 39.936004], name: "Ankara" },
+		location: [32.820102, 39.936004],
 	},
 	{
 		sport: "basketball",
 		events: ["generic", "goal"],
-		location: { coordinates: [55.168961, 51.773948], name: "Orenburg" },
+		location: [55.168961, 51.773948],
 	},
 	{
 		sport: "basketball",
 		events: ["time", "time"],
-		location: { coordinates: [92.864194, 56.012903], name: "Krasnoyarsk" },
+		location: [92.864194, 56.012903],
 	},
 	{
 		sport: "basketball",
 		events: ["time", "generic"],
-		location: { coordinates: [22.19543, 62.424461], name: "Kauhajoki" },
+		location: [22.19543, 62.424461],
 	},
 	{
 		sport: "basketball",
 		events: ["goal"],
-		location: { coordinates: [28.20355, 61.05862], name: "Lappeenranta" },
-	},
-	{
-		sport: "basketball",
-		events: ["goal", "time"],
-		location: { coordinates: null, name: "Sweden" },
+		location: [28.20355, 61.05862],
 	},
 	{
 		sport: "basketball",
 		events: ["time"],
-		location: { coordinates: null, name: "China" },
+		location: [29.91143, 40.764595],
 	},
 	{
 		sport: "basketball",
 		events: ["time"],
-		location: { coordinates: [29.91143, 40.764595], name: "Kocaeli" },
-	},
-	{
-		sport: "basketball",
-		events: ["time"],
-		location: { coordinates: [19.37731, 44.188016], name: "Ljubovija" },
+		location: [19.37731, 44.188016],
 	},
 	{
 		sport: "soccer",
 		events: ["refree", "refree", "refree"],
-		location: { coordinates: [25.495, 65.030278], name: "Oulu" },
-	},
-	{
-		sport: "basketball",
-		events: ["goal", "goal", "time", "time"],
-		location: { coordinates: null, name: "Kazakhstan" },
+		location: [25.495, 65.030278],
 	},
 	{
 		sport: "basketball",
 		events: ["goal", "time"],
-		location: { coordinates: [30.70575, 36.9260349], name: "Antalya" },
+		location: [30.70575, 36.9260349],
 	},
 ];
-
-export default function App() {
-	return (
-		<div className="App">
-			<Map data={data} />
-		</div>
-	);
-}

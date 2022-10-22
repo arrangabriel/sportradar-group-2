@@ -22,10 +22,10 @@ async function getEventsAsync() {
             if (coordinates == null) {
                 if (location.location != null) {
                     let { lat, lng } = (await Geocode.fromAddress(location.location)).results[0].geometry.location;
-                    coordinates = [lat, lng]
+                    coordinates = [lng, lat]
                 }
             } else {
-                coordinates = coordinates.split(",");
+                coordinates = coordinates.split(",").map((i) => Number(i));
                 coordinates.reverse();
             }
             if (coordinates != null) {
@@ -34,7 +34,7 @@ async function getEventsAsync() {
                     "events": [
                         eventType
                     ],
-                    "location": coordinates
+                    "coordinates": coordinates
                 }
             }
         } else {

@@ -7,11 +7,10 @@ import { IconLayer } from "@deck.gl/layers";
  */
 
 function IconsLayer(props) {
-	const { data } = props;
 
 	return new IconLayer({
 		id: "IconLayer",
-		data: data,
+		data: props,
 
 		/* props from IconLayer class */
 

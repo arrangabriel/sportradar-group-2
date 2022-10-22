@@ -21,21 +21,19 @@ const INITIAL_VIEW_STATE = {
 	bearing: 0,
 };
 
-export default function Map(props) {
-	const { data } = props;
-
-	const [events, setEvents] = useState([]);
+export default function Map() {
+	const [layers, setLayers] = useState(CreateLayers({}));
+	const [data, setData] = useState([])
 
 	useEffect(() => {
+		// First call
 		getEventsSync((result) => {
-			setEvents(result);
+			setLayers(CreateLayers(result));
 		});
 		// Fetching of events
 		const interval = setInterval(() => {
-			console.log("This will be called every 30 seconds");
-			// Fetch list
 			getEventsSync((result) => {
-				setEvents(result);
+				setLayers(CreateLayers(result));
 			});
 		}, 30 * 1000);
 
@@ -43,16 +41,15 @@ export default function Map(props) {
 	}, []);
 
 	useEffect(() => {
-		// Do stuff with event list
-		console.log("Events from map", events);
-	}, [events]);
+		console.log(layers)
 
-	const layers = CreateLayers({ data });
+	}, [layers]);
+
 
 	return (
 		<DeckGL
 			initialViewState={INITIAL_VIEW_STATE}
-			controller={false}
+			controller={true}
 			layers={layers}
 		>
 			<MapboxMap
