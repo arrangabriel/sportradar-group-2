@@ -1,6 +1,8 @@
-getEventsSync((e) => { console.log(e) })
+import Geocode from 'react-geocode';
 
-function getEventsSync(callback) {
+Geocode.setApiKey(process.env.REACT_APP_GEO_KEY)
+
+export function getEventsSync(callback) {
     getEventsAsync().then((result) => callback(result));
 }
 
@@ -8,33 +10,47 @@ async function getEventsAsync() {
     let response = await fetch("https://dev.fn.sportradar.com/common/en/Europe:Oslo/gismo/event_get");
     let data = await response.json();
 
-    results = {}
+    let results = {}
 
-    for (matchEvent of data.doc[0].data) {
-        eventType = getEventType(matchEvent.name)
+    for (let matchEvent of data.doc[0].data) {
+        let eventType = getEventType(matchEvent.name)
         if (results[matchEvent.matchid] == undefined) {
             let location = await getMatchLocation(matchEvent.matchid);
-            results[matchEvent.matchid] = {
-                "sport": getSportTypes(matchEvent._sid),
-                "events": [
-                    eventType
-                ],
-                "location": location
+
+            let coordinates = location.coordinates
+
+            if (coordinates == null) {
+                if (location.location != null) {
+                    let { lat, lng } = (await Geocode.fromAddress(location.location)).results[0].geometry.location;
+                    coordinates = [lat, lng]
+                }
+            } else {
+                coordinates = coordinates.split(",");
+                coordinates.reverse();
+            }
+            if (coordinates != null) {
+                results[matchEvent.matchid] = {
+                    "sport": getSportTypes(matchEvent._sid),
+                    "events": [
+                        eventType
+                    ],
+                    "location": coordinates
+                }
             }
         } else {
             results[matchEvent.matchid].events.push(eventType)
         }
     }
 
-    results_filtered = {}
+    let resultsList = []
 
-    for (key of Object.keys(results)) {
-        let match = results[key]
-        if (!(match.location.coordinates == null && match.location.location == null)) {
-            results_filtered[key] = match
-        }
+    for (let matchEventId of Object.keys(results)) {
+        let matchEvent = results[matchEventId]
+        matchEvent.id = matchEventId
+        resultsList.push(matchEvent)
     }
-    return results_filtered
+
+    return resultsList
 }
 
 function getSportTypes(id) {
@@ -42,7 +58,7 @@ function getSportTypes(id) {
 }
 
 function getEventType(event) {
-    for (type of eventTypes) {
+    for (let type of eventTypes) {
         if (type[1].includes(event)) {
             return type[0]
         }
@@ -59,7 +75,7 @@ async function getMatchLocation(matchid) {
     return response
 }
 
-eventTypes = [
+let eventTypes = [
     ["goal", [
         "Goal",
         '1 pt scored',
@@ -86,7 +102,7 @@ eventTypes = [
     ]]
 ]
 
-sports = {
+let sports = {
     "1": "soccer",
     "2": "basketball",
     "3": "baseball",
