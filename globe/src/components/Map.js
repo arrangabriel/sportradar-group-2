@@ -7,6 +7,8 @@ import { getEventsSync } from '../backend/backend.js'
 // import iconLayer from "./IconLayer";
 import CreateLayers from "./Layers";
 
+
+
 // Set your mapbox access token here
 const MAPBOX_ACCESS_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
@@ -25,6 +27,9 @@ export default function Map(props) {
 	const [events, setEvents] = useState([]);
 
 	useEffect(() => {
+		getEventsSync((result) => {
+			setEvents(result)
+		})
 		// Fetching of events
 		const interval = setInterval(() => {
 			console.log('This will be called every 30 seconds');

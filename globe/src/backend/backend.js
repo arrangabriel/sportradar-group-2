@@ -1,12 +1,12 @@
 import Geocode from 'react-geocode';
 
+Geocode.setApiKey(process.env.REACT_APP_GEO_KEY)
 
 export function getEventsSync(callback) {
     getEventsAsync().then((result) => callback(result));
 }
 
 async function getEventsAsync() {
-    console.log(process.env)
     let response = await fetch("https://dev.fn.sportradar.com/common/en/Europe:Oslo/gismo/event_get");
     let data = await response.json();
 
@@ -42,7 +42,15 @@ async function getEventsAsync() {
         }
     }
 
-    return results
+    let resultsList = []
+
+    for (let matchEventId of Object.keys(results)) {
+        let matchEvent = results[matchEventId]
+        matchEvent.id = matchEventId
+        resultsList.push(matchEvent)
+    }
+
+    return resultsList
 }
 
 function getSportTypes(id) {
