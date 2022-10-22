@@ -13,7 +13,8 @@ async function getEventsAsync() {
     for (matchEvent of data.doc[0].data) {
         eventType = getEventType(matchEvent.name)
         if (results[matchEvent.matchid] == undefined) {
-            let location = await getMatchLocation(matchEvent.matchid);
+            let location = await getMatchLocation(matchEvent.matchid).split(",");
+            location.reverse();
             results[matchEvent.matchid] = {
                 "sport": getSportTypes(matchEvent._sid),
                 "events": [
