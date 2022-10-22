@@ -73,28 +73,6 @@ function Map(props) {
 				latitude={edges[0].latitude}
 				longitude={edges[0].longitude}
 			/>
-			{/*edges.map(edge => (
-        <Marker latitude={edge.latitude} longitude={edge.longitude}>
-          <div
-            style={{
-              background: "red",
-              cursor: "pointer",
-              width: 32,
-              height: 32,
-              borderRadius: 1000,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center"
-              //opacity: 0.3
-            }}
-            title={edge.name}
-            onClick={() => console.log("device click")}
-            onMouseEnter={() => console.log("device hover")}
-          >
-            {edge.name[0]}
-          </div>
-        </Marker>
-          ))*/}
 		</ReactMapGL>
 	);
 }
