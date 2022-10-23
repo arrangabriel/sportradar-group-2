@@ -29,13 +29,13 @@ export default function Map() {
 	useEffect(() => {
 		// First call
 		getEventsSync((result) => {
-			setData(result)
+			setData(result);
 		});
 		// Fetching of events
 		const interval = setInterval(() => {
 			getEventsSync((result) => {
-				setCounter(0)
-				setData(result)
+				setCounter(0);
+				setData(result);
 			});
 		}, 30 * 1000);
 
@@ -48,14 +48,12 @@ export default function Map() {
 
 	useEffect(() => {
 		if (counter < data.length) {
-			new Promise(r => setTimeout(r, (30 * 1000) / data.length)).then(() => {
-				setCounter(counter + 1)
-				setLayers(CreateLayers(data.slice(0, counter)))
-			}
-			)
+			new Promise((r) => setTimeout(r, (30 * 1000) / data.length)).then(() => {
+				setCounter(counter + 1);
+				setLayers(CreateLayers(data.slice(0, counter)));
+			});
 		}
-	}, [data, layers])
-
+	}, [data, layers]);
 
 	return (
 		<DeckGL

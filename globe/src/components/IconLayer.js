@@ -7,7 +7,6 @@ import { IconLayer } from "@deck.gl/layers";
  */
 
 function IconsLayer(props) {
-
 	return new IconLayer({
 		id: props.id,
 		data: props,
@@ -21,7 +20,7 @@ function IconsLayer(props) {
 		// getAngle: 0,
 		getColor: (d) => [Math.sqrt(d.exits), 140, 0],
 		getIcon: (d) => ({
-			url: createPin(),
+			url: getIcon(d.sport),
 			width: 128,
 			height: 128,
 			anchorY: 128,
@@ -33,7 +32,7 @@ function IconsLayer(props) {
 		// onIconError: null,
 		// sizeMaxPixels: Number.MAX_SAFE_INTEGER,
 		// sizeMinPixels: 0,
-		sizeScale: 8,
+		sizeScale: 5,
 		// sizeUnits: 'pixels',
 
 		/* props inherited from Layer class */
@@ -55,35 +54,18 @@ function getIcon(sportName) {
 }
 
 const iconMap = {
-	"football": "https://cdn-icons-png.flaticon.com/512/2813/2813798.png",
-	"basketball": "https://cdn-icons-png.flaticon.com/512/889/889289.png",
-	"soccer": "https://cdn-icons-png.flaticon.com/512/1165/1165156.png",
-	"cricket": "https://cdn-icons-png.flaticon.com/512/1454/1454533.png",
-	"tennis": "https://cdn-icons-png.flaticon.com/512/4074/4074317.png",
-	"badminton": "https://cdn-icons-png.flaticon.com/512/3445/3445542.png",
+	football: "https://cdn-icons-png.flaticon.com/512/2813/2813798.png",
+	basketball: "https://cdn-icons-png.flaticon.com/512/889/889289.png",
+	soccer: "https://cdn-icons-png.flaticon.com/512/1165/1165156.png",
+	cricket: "https://cdn-icons-png.flaticon.com/512/1454/1454533.png",
+	tennis: "https://cdn-icons-png.flaticon.com/512/4074/4074317.png",
+	badminton: "https://cdn-icons-png.flaticon.com/512/3445/3445542.png",
 	"table tennis": "https://cdn-icons-png.flaticon.com/512/8704/8704018.png",
-	"baseball": "https://cdn-icons-png.flaticon.com/512/3210/3210549.png",
-	"handball": "https://cdn-icons-png.flaticon.com/512/4893/4893959.png",
+	baseball: "https://cdn-icons-png.flaticon.com/512/3210/3210549.png",
+	handball: "https://cdn-icons-png.flaticon.com/512/4893/4893959.png",
 	"ice hockey": "https://cdn-icons-png.flaticon.com/512/3062/3062042.png",
-	"volleyball": "https://cdn-icons-png.flaticon.com/512/184/184940.png",
-	"generic": "https://cdn-icons-png.flaticon.com/512/857/857492.png",
+	volleyball: "https://cdn-icons-png.flaticon.com/512/184/184940.png",
+	generic: "https://cdn-icons-png.flaticon.com/512/857/857492.png",
 };
 
 export default IconsLayer;
-
-function createPin() {
-
-	let canvas = document.createElement("canvas");
-	let context = canvas.getContext("2d");
-
-	const baseImage = new Image(128, 128);
-	baseImage.src = "https://cdn-icons-png.flaticon.com/512/447/447031.png";
-	baseImage.onload = function () {
-		context.fill()
-		context.drawImage(baseImage, 0, 0);
-	}
-
-	console.log(canvas.toDataURL())
-
-	return canvas.toDataURL();
-}
