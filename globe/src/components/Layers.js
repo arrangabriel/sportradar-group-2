@@ -21,6 +21,7 @@ export default function CreateLayers(events) {
 	const icons = []
 
 	for (let event of events) {
+		event.createdTime = Date.now()
 		icons.push(IconsLayer([event]))
 	}
 

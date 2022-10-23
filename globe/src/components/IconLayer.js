@@ -28,7 +28,9 @@ function IconsLayer(event) {
 		}),
 		// getPixelOffset: [0, 0],
 		getPosition: (d) => d.coordinates,
-		getSize: (d) => 5,
+		getSize: (d) => {
+			return 2 + (Math.random() * 4)
+		},
 
 		// onIconError: null,
 		// sizeMaxPixels: Number.MAX_SAFE_INTEGER,

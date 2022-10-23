@@ -51,7 +51,7 @@ export default function Map() {
 				setCounter(0)
 			}
 			let lowerBound = counter < events.length / 2 ? Math.floor(counter / 3) : Math.floor(counter / 1.2)
-			console.log(lowerBound, counter, events.length)
+			//console.log(lowerBound, counter, events.length)
 			setLayers([CreateLayers(events.slice(lowerBound, (counter) % events.length))])
 		})
 	}, [layers])
