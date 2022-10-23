@@ -47,7 +47,15 @@ async function getEventsAsync() {
     for (let matchEventId of Object.keys(results)) {
         let matchEvent = results[matchEventId]
         matchEvent.id = matchEventId
-        resultsList.push(matchEvent)
+        let i = 1
+        for (let event of matchEvent.events) {
+            resultsList.push({
+                events: [event],
+                id: matchEventId + (i++),
+                sport: matchEvent.sport,
+                coordinates: matchEvent.coordinates
+            })
+        }
     }
 
     resultsList = Array(resultsList.length).fill(null)
