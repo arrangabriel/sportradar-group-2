@@ -17,8 +17,12 @@ import IconsLayer from "./IconLayer";
  * @returns
  */
 
-export default function CreateLayers(props) {
-	const Icons = IconsLayer(props);
+export default function CreateLayers(events) {
+	const icons = []
 
-	return [Icons];
+	for (let event of events) {
+		icons.push(IconsLayer([event]))
+	}
+
+	return icons;
 }
