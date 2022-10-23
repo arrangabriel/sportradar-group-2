@@ -29,6 +29,7 @@ export default function Map() {
 	useEffect(() => {
 		// First call
 		getEventsSync((result) => {
+			console.log(result)
 			setData(result)
 		});
 		// Fetching of events
@@ -48,8 +49,8 @@ export default function Map() {
 
 	useEffect(() => {
 		if (counter < data.length) {
-			new Promise(r => setTimeout(r, (30 * 1000) / data.length)).then(() => {
-				setCounter(counter + 1)
+			new Promise(r => setTimeout(r, (30 * 1000 * 3) / data.length)).then(() => {
+				setCounter(counter + 3)
 				setLayers(CreateLayers(data.slice(0, counter)))
 			}
 			)

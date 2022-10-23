@@ -50,6 +50,11 @@ async function getEventsAsync() {
         resultsList.push(matchEvent)
     }
 
+    resultsList = Array(resultsList.length).fill(null)
+        .map((_, i) => [Math.random(), i])
+        .sort(([a], [b]) => a - b)
+        .map(([, i]) => resultsList[i])
+
     return resultsList
 }
 
