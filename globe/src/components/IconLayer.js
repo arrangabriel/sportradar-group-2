@@ -43,7 +43,7 @@ function IconsLayer(props) {
 		// coordinateSystem: COORDINATE_SYSTEM.LNGLAT,
 		// highlightColor: [0, 0, 128, 128],
 		// modelMatrix: null,
-		// opacity: 1,
+		opacity: 1,
 		pickable: true,
 		// visible: true,
 		// wrapLongitude: false,
@@ -55,18 +55,18 @@ function getIcon(sportName) {
 }
 
 const iconMap = {
-	"football": "https://cdn-icons-png.flaticon.com/512/2813/2813798.png",
-	"basketball": "https://cdn-icons-png.flaticon.com/512/889/889289.png",
-	"soccer": "https://cdn-icons-png.flaticon.com/512/1165/1165156.png",
-	"cricket": "https://cdn-icons-png.flaticon.com/512/1454/1454533.png",
-	"tennis": "https://cdn-icons-png.flaticon.com/512/4074/4074317.png",
-	"badminton": "https://cdn-icons-png.flaticon.com/512/3445/3445542.png",
-	"table tennis": "https://cdn-icons-png.flaticon.com/512/8704/8704018.png",
-	"baseball": "https://cdn-icons-png.flaticon.com/512/3210/3210549.png",
-	"handball": "https://cdn-icons-png.flaticon.com/512/4893/4893959.png",
-	"ice hockey": "https://cdn-icons-png.flaticon.com/512/3062/3062042.png",
-	"volleyball": "https://cdn-icons-png.flaticon.com/512/184/184940.png",
-	"generic": "https://cdn-icons-png.flaticon.com/512/857/857492.png",
+	"football": "./sport-icons/american-football-pin.png",
+	"basketball": "./sport-icons/basketball-pin.png",
+	"soccer": "./sport-icons/soccer-pin.png",
+	"cricket": "./sport-icons/cricket-pin.png",
+	"tennis": "./sport-icons/tennis-pin.png",
+	"badminton": "./sport-icons/badminton-pin.png",
+	"table tennis": "./sport-icons/ping-pong-pin.png",
+	"baseball": "./sport-icons/baseball-pin.png",
+	"handball": "./sport-icons/handball-pin.png",
+	"ice hockey": "./sport-icons/ice-hockey-pin.png",
+	"volleyball": "./sport-icons/volleyball-pin.png",
+	"generic": "./sport-icons/generic-pin.png",
 };
 
 export default IconsLayer;

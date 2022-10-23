@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState, useEffect } from "react";
+import React, { useCallback, useRef, useState, useEffect, useLayoutEffect } from "react";
 
 import DeckGL from "@deck.gl/react";
 import { Map as MapboxMap } from "react-map-gl";
@@ -55,6 +55,23 @@ export default function Map() {
 			)
 		}
 	}, [data, layers])
+
+
+
+	// variables
+	const step = 0.1;
+	const intervalMS = 20;
+	const loopLength = 2500;
+
+	const [time, setTime] = useState(1);
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setTime(t => (t - step) % loopLength);
+		}, intervalMS);
+
+		return () => clearInterval(interval);
+	}, []);
 
 
 	return (
