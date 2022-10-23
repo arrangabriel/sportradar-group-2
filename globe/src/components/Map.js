@@ -21,40 +21,40 @@ const INITIAL_VIEW_STATE = {
 	bearing: 0,
 };
 
+let roundTime = 30 * 1000
+
 export default function Map() {
-	const [layers, setLayers] = useState(CreateLayers({}));
-	const [data, setData] = useState([]);
+	const [layers, setLayers] = useState(CreateLayers([{}]));
+	const [events, setEvents] = useState([]);
 	const [counter, setCounter] = useState(0);
 
 	useEffect(() => {
 		// First call
-		getEventsSync((result) => {
-			setData(result)
+		getEventsSync((newEvents) => {
+			setCounter(0)
+			setEvents(newEvents)
 		});
 		// Fetching of events
 		const interval = setInterval(() => {
-			getEventsSync((result) => {
-				setCounter(0)
-				setData(result)
+			getEventsSync((newEvents) => {
+				setEvents(newEvents)
 			});
-		}, 30 * 1000);
+		}, roundTime);
 
 		return () => clearInterval(interval);
 	}, []);
 
-	// useEffect(() => {
-	// 	console.log(layers[0])
-	// }, [layers]);
-
 	useEffect(() => {
-		if (counter < data.length) {
-			new Promise(r => setTimeout(r, (30 * 1000) / data.length)).then(() => {
-				setCounter(counter + 1)
-				setLayers(CreateLayers(data.slice(0, counter)))
+		new Promise(r => setTimeout(r, (roundTime * 3) / events.length)).then(() => {
+			setCounter(counter + Math.floor(4 * Math.random() + 1))
+			if (counter > events.length) {
+				setCounter(0)
 			}
-			)
-		}
-	}, [data, layers])
+			let lowerBound = counter < events.length / 2 ? Math.floor(counter / 3) : Math.floor(counter / 1.2)
+			console.log(lowerBound, counter, events.length)
+			setLayers([CreateLayers(events.slice(lowerBound, (counter) % events.length))])
+		})
+	}, [layers])
 
 
 	return (

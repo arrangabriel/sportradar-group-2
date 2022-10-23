@@ -2,15 +2,15 @@ import { IconLayer } from "@deck.gl/layers";
 
 /**
  *
- * @param {*} props
+ * @param {*} event
  * @returns
  */
 
-function IconsLayer(props) {
+function IconsLayer(event) {
 
 	return new IconLayer({
-		id: props.id,
-		data: props,
+		id: event[0].id,
+		data: event,
 
 		/* props from IconLayer class */
 
